@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require './person'
 
 class Teacher < Person
-  def initialize(*all , specialization)
+  def initialize(*all, specialization)
     super(*all)
     @specialization = specialization
   end
