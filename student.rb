@@ -4,7 +4,6 @@ class Student < Person
   def initialize(*all, classroom)
     super(*all)
     @classroom = classroom
-    add_classroom(@classroom)
   end
 
   def play_hooky
