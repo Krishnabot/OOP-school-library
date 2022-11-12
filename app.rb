@@ -124,9 +124,7 @@ class App
         puts "#{@people.find_index(person)} - #{person.name}"
       end
       selected_person = gets.to_i
-
       rental = Rental.new(date, @books[selected_book], @people[selected_person])
-
       @rentals << rental
       puts 'Rental created successfully' if @rentals.include?(rental)
     end
