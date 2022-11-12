@@ -1,6 +1,8 @@
 # OOP School Library
 A library app with CLI built with Ruby to keep a record of all transactions related to students, teachers and books
 
+
+[UML CLass DIagram](https://user-images.githubusercontent.com/40334904/201475709-42f68416-931a-4fe1-bf3c-a352f2fc9253.png)
 ## BUILT WITH  :hammer_and_wrench: 
 
 - RUBY
