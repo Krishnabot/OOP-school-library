@@ -13,6 +13,7 @@ A library app with CLI built with Ruby to keep a record of all transactions rela
 
 - Use `https://github.com/Krishnabot/OOP-school-library.git` to clone this repo in your Local machine.
 - In terminal  run `ruby --version && irb` for Ruby Installation 
+- Install Colorize with `gem install colorize`
 - In the terminal, you can try running ruby by using IRB or an extension in the case of VSCode e.g Code runner
 
 ## Author
