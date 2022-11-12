@@ -66,7 +66,7 @@ class App
     end
   end
 
-  def create_person
+  def create_person # rubocop:disable Metrics/ClassLength
     print 'Do you want to create a student (1) or a teacher (2)?[Input the number]:'
     person_choice = gets.chomp
     if person_choice != '1' && person_choice != '2'
@@ -123,7 +123,8 @@ class App
       @people.each do |person|
         puts "#{@people.find_index(person)} - #{person.name}"
       end
-      selected_person = gets.to_i rental = Rental.new(date, @books[selected_book], @people[selected_person])
+      selected_person = gets.to_i 
+      rental = Rental.new(date, @books[selected_book], @people[selected_person])
       @rentals << rental
       puts 'Rental created successfully' if @rentals.include?(rental)
     end
