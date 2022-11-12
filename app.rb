@@ -108,7 +108,7 @@ class App
     puts 'Book created successfully' if @books.include?(book)
   end
 
-# rubocop:disable Metrics/MethodLength
+ # rubocop:disable Metrics/MethodLength
   def create_rental
     if @books.empty?
       puts 'You have no  books currwenly. Please add a book.'
