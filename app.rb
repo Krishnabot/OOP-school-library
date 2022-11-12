@@ -76,7 +76,6 @@ class App
       age = gets.chomp
       print 'Name: '
       name = gets.chomp
-
       case person_choice
       when '1'
         print 'Has parent permission? [Y/N]: '
@@ -91,9 +90,7 @@ class App
         person = Teacher.new(age, name, true, specialization)
       end
     end
-
     @people << person
-
     puts 'Person created successfully'
   end
 
@@ -127,7 +124,6 @@ class App
         puts "#{@people.find_index(person)} - #{person.name}"
       end
       selected_person = gets.to_i
-
       rental = Rental.new(date, @books[selected_book], @people[selected_person])
 
       @rentals << rental
