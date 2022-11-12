@@ -66,7 +66,8 @@ class App
     end
   end
   # rubocop:disable Metrics/MethodLength
-  def create_person 
+
+  def create_person
     print 'Do you want to create a student (1) or a teacher (2)?[Input the number]:'
     person_choice = gets.chomp
     if person_choice != '1' && person_choice != '2'
@@ -93,7 +94,8 @@ class App
     @people << person
     puts 'Person created successfully'
   end
-    # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength
+
   def create_book
     print 'Title: '
     title = gets.chomp
@@ -107,7 +109,7 @@ class App
   end
 
 # rubocop:disable Metrics/MethodLength
-  def create_rental 
+  def create_rental
     if @books.empty?
       puts 'You have no  books currwenly. Please add a book.'
     elsif @people.empty?
