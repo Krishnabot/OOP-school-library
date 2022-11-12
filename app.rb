@@ -79,15 +79,12 @@ class App
       case person_choice
       when '1'
         print 'Has parent permission? [Y/N]: '
-        parent_permission = gets.chomp
-        parent_permission = parent_permission.downcase == 'y'
+        parent_permission = gets.chomp parent_permission = parent_permission.downcase == 'y'
         print 'Please enter a classroom: '
-        classroom = gets.chomp
-        person = Student.new(age, name, parent_permission, classroom)
+        classroom = gets.chomp xperson = Student.new(age, name, parent_permission, classroom)
       when '2'
         print 'specialization: '
-        specialization = gets.chomp
-        person = Teacher.new(age, name, true, specialization)
+        specialization = gets.chomp person = Teacher.new(age, name, true, specialization)
       end
     end
     @people << person
