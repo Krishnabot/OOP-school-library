@@ -94,7 +94,6 @@ class App
     @people << person
     puts 'Person created successfully'
   end
-  # rubocop:enable Metrics/MethodLength
 
   def create_book
     print 'Title: '
@@ -108,7 +107,6 @@ class App
     puts 'Book created successfully' if @books.include?(book)
   end
 
- # rubocop:disable Metrics/MethodLength
 
   def create_rental
     if @books.empty?
@@ -133,6 +131,7 @@ class App
       puts 'Rental created successfully' if @rentals.include?(rental)
     end
   end
+  
   # rubocop:enable Metrics/MethodLength
 
   def list_all_rentals_person_id
