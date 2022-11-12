@@ -65,9 +65,7 @@ class App
       puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
   end
-
-  # rubocop:disable Metrics/ClassLength
-
+  # rubocop:disable ClassLength
   def create_person 
     print 'Do you want to create a student (1) or a teacher (2)?[Input the number]:'
     person_choice = gets.chomp
@@ -110,7 +108,7 @@ class App
     puts 'Book created successfully' if @books.include?(book)
   end
 
-# rubocop:disable Metrics/ClassLength
+# rubocop:disable ClassLength
   def create_rental 
     if @books.empty?
       puts 'You have no  books currwenly. Please add a book.'
