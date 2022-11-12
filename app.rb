@@ -5,7 +5,7 @@ require_relative 'book'
 require 'colorize'
 
 class App
-  def initialize()
+  def initialize
     @books = []
     @people = []
     @rentals = []
