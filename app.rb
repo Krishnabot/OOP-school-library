@@ -11,62 +11,25 @@ class App
     @rentals = []
   end
 
-  def run
-    user_response = 0
-    puts "\n\nWelcome to OOP School Library App!\n\n".colorize(color: :green).underline
-    while user_response != '9'
-      puts "Please choose an option:\n\n".colorize(color: :magenta).bold
-      app_options.each do |choice|
-        if choice.include?("Exit")
-          puts choice.colorize(color: :red)
-        else
-          puts choice.colorize(color: :blue)
-        end
-      end
-      puts "\n\nEnter Option [number]: ".colorize(color: :blue).bold
-      user_response = gets.chomp
-      puts "\n\n"
-      check_selection(user_response)
-
-    end
-    puts "Thank you for using this app!\n\n".colorize(color: :cyan).bold if user_response == '9'
-  end
-
-  def check_selection(response)
-    case response
-    when '0'
-      list_all_books
-    when '1'
-      list_all_people
-    when '2'
-      list_all_students
-    when '3'
-      list_all_teachers
-    when '4'
-      create_person
-    when '5'
-      create_book
-    when '6'
-      create_rental
-    when '7'
-      list_all_rentals_person_id
-    when '8'
-      list_all_rentals_for_book
-    end
-  end
 
   def list_all_books
+    if @books.empty?
+      puts 'You have no books currently. Please add a book.'
+    end
     @books.each do |book|
-      puts "Title: \"#{book.title}\" Author: #{book.author}"
+      puts "#{@books.find_index(book)} Title: \"#{book.title}\" Author: #{book.author}"
     end
   end
 
   def list_all_people
+    puts @people
+    if @people.empty?
+      puts 'Person not found. Please add a person.'
+    end
     @people.each do |person|
-      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      puts "[#{person.class}] #{@people.find_index(person)} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
   end
-  # rubocop:disable Metrics/MethodLength
 
   def create_person
     puts 'Do you want to create a student (1) or a teacher (2)?[Input the number]: '
@@ -80,20 +43,33 @@ class App
       name = gets.chomp
       case person_choice
       when '1'
-        puts 'Has parent permission? [Y/N]: '
-        parent_permission = gets.chomp
-        parent_permission = parent_permission.downcase == 'y'
-        puts 'Please enter a classroom: '
-        classroom = gets.chomp
-        person = Student.new(age, name, parent_permission, classroom)
+        create_student(age, name)
       when '2'
-        puts 'specialization: '
-        specialization = gets.chomp
-        person = Teacher.new(age, name, true, specialization)
+        create_teacher(age, name)
       end
     end
-    @people << person
+
     puts 'Person created successfully'
+  end
+
+  def create_student(age, name)
+    puts 'Has parent permission? [Y/N]: '
+    parent_permission = gets.chomp
+    parent_permission = parent_permission.downcase == 'y'
+    puts 'Please enter a classroom: '
+    classroom = gets.chomp
+    student = Student.new(age, name, parent_permission, classroom)
+    @people << student
+    puts @people
+  end
+
+  def create_teacher(age, name)
+    puts 'specialization: '
+    specialization = gets.chomp
+    teacher = Teacher.new(age, name, true, specialization)
+    @people << teacher
+    puts 'inside teacher method:'
+    puts @people
   end
 
   def create_book
@@ -109,27 +85,20 @@ class App
   end
 
   def create_rental
-    if @books.empty?
-      puts 'You have no  books currwenly. Please add a book.'
-    elsif @people.empty?
-      puts 'Person not found. Please add a person.'
-    else
       puts 'Select a book from the following list by number'
-      @books.each do |book|
-        puts "#{@books.find_index(book)} - #{book.title}"
-      end
+      list_all_books
       selected_book = gets.to_i
+
       puts 'Date: '
       date = gets.chomp
       puts 'Select a person from the following list by number (not id)'
-      @people.each do |person|
-        puts "#{@people.find_index(person)} - #{person.name}"
-      end
+
+      list_all_people
       selected_person = gets.to_i
+
       rental = Rental.new(date, @books[selected_book], @people[selected_person])
       @rentals << rental
       puts 'Rental created successfully' if @rentals.include?(rental)
-    end
   end
   # rubocop:enable Metrics/MethodLength
 
