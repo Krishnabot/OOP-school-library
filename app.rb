@@ -13,13 +13,17 @@ class App
 
   def run
     user_response = 0
-    puts "\n\nWelcome to OOP School Library App!\n\n".colorize(color: :green).bold
+    puts "\n\nWelcome to OOP School Library App!\n\n".colorize(color: :green).underline
     while user_response != '9'
-      puts "Please choose an option:\n\n".colorize(color: :magenta)
+      puts "Please choose an option:\n\n".colorize(color: :magenta).bold
       app_options.each do |choice|
-        puts choice
+        if choice.include?("Exit")
+          puts choice.colorize(color: :red)
+        else
+          puts choice.colorize(color: :blue)
+        end
       end
-      puts "\n\nEnter Option [number]: ".colorize(color: :white).bold
+      puts "\n\nEnter Option [number]: ".colorize(color: :blue).bold
       user_response = gets.chomp
       puts "\n\n"
       check_selection(user_response)
