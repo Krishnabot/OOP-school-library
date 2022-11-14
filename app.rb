@@ -2,7 +2,6 @@ require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
-require 'colorize'
 
 class App
   def initialize
@@ -13,23 +12,23 @@ class App
 
   def run
     user_response = 0
-    puts "\n\nWelcome to OOP School Library App!\n\n".colorize(color: :green).underline
+    puts "\n\nWelcome to OOP School Library App!\n\n"
     while user_response != '9'
-      puts "Please choose an option:\n\n".colorize(color: :magenta).bold
+      puts "Please choose an option:\n\n"
       app_options.each do |choice|
         if choice.include?("Exit")
-          puts choice.colorize(color: :red)
+          puts choice
         else
-          puts choice.colorize(color: :blue)
+          puts choice
         end
       end
-      puts "\n\nEnter Option [number]: ".colorize(color: :blue).bold
+      puts "\n\nEnter Option [number]: "
       user_response = gets.chomp
       puts "\n\n"
       check_selection(user_response)
 
     end
-    puts "Thank you for using this app!\n\n".colorize(color: :cyan).bold if user_response == '9'
+    puts "Thank you for using this app!\n\n" if user_response == '9'
   end
 
   def check_selection(response)
@@ -146,6 +145,3 @@ class App
     end)
   end
 end
-
-p String.colors
-p String.modes
