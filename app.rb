@@ -14,32 +14,40 @@ class App
   def run
     user_response = 0
     puts "\n\nWelcome to OOP School Library App!\n\n".colorize(color: :green).bold
-    while user_response != '7'
+    while user_response != '9'
       puts "Please choose an option:\n\n".colorize(color: :magenta)
-      app_options
-      print 'Enter Option [number]: '.colorize(color: :white).bold
+      app_options.each do |choice|
+        puts choice
+      end
+      puts "\n\nEnter Option [number]: ".colorize(color: :white).bold
       user_response = gets.chomp
       puts "\n\n"
       check_selection(user_response)
 
     end
-    puts "Thank you for using this app!\n\n".colorize(color: :cyan).bold if user_response == '7'
+    puts "Thank you for using this app!\n\n".colorize(color: :cyan).bold if user_response == '9'
   end
 
   def check_selection(response)
     case response
-    when '1'
+    when '0'
       list_all_books
-    when '2'
+    when '1'
       list_all_people
+    when '2'
+      list_all_students
     when '3'
-      create_person
+      list_all_teachers
     when '4'
-      create_book
+      create_person
     when '5'
-      create_rental
+      create_book
     when '6'
+      create_rental
+    when '7'
       list_all_rentals_person_id
+    when '8'
+      list_all_rentals_for_book
     end
   end
 
@@ -57,7 +65,7 @@ class App
   # rubocop:disable Metrics/MethodLength
 
   def create_person
-    print 'Do you want to create a student (1) or a teacher (2)?[Input the number]:'
+    puts 'Do you want to create a student (1) or a teacher (2)?[Input the number]: '
     person_choice = gets.chomp
     if person_choice != '1' && person_choice != '2'
       puts 'Invalid option'
@@ -68,14 +76,14 @@ class App
       name = gets.chomp
       case person_choice
       when '1'
-        print 'Has parent permission? [Y/N]: '
+        puts 'Has parent permission? [Y/N]: '
         parent_permission = gets.chomp
         parent_permission = parent_permission.downcase == 'y'
-        print 'Please enter a classroom: '
+        puts 'Please enter a classroom: '
         classroom = gets.chomp
         person = Student.new(age, name, parent_permission, classroom)
       when '2'
-        print 'specialization: '
+        puts 'specialization: '
         specialization = gets.chomp
         person = Teacher.new(age, name, true, specialization)
       end
@@ -85,9 +93,9 @@ class App
   end
 
   def create_book
-    print 'Title: '
+    puts 'Title: '
     title = gets.chomp
-    print 'Author: '
+    puts 'Author: '
     author = gets.chomp
 
     book = Book.new(title, author)
@@ -107,7 +115,7 @@ class App
         puts "#{@books.find_index(book)} - #{book.title}"
       end
       selected_book = gets.to_i
-      print 'Date: '
+      puts 'Date: '
       date = gets.chomp
       puts 'Select a person from the following list by number (not id)'
       @people.each do |person|
@@ -123,7 +131,7 @@ class App
 
   def list_all_rentals_person_id
     list_all_people
-    print 'ID of person: '
+    puts 'ID of person: '
     person_id = gets.to_i
     puts(@rentals.map do |rental|
       if rental.person.id == person_id
