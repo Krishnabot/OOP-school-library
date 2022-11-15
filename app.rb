@@ -34,114 +34,46 @@ class App
   def check_selection(response)
     case response
     when '0'
-      list_all_books
+      Book.list_all_books(@books)
     when '1'
-      list_all_people
+      Person.list_all_people(@people)
     when '2'
-      list_all_students
+      Student.lists_all_students(@people)
     when '3'
-      list_all_teachers
+      Teacher.lists_all_teachers(@people)
     when '4'
-      create_person
+      person = Person.create_person
+      @people << person
+      puts "\n\nPerson created successfully" if @people.include?(person)
     when '5'
-      create_book
+      book = Book.create_book
+      @books << book
+      puts "\n\n Book added successfully" if @books.include?(book)
+
     when '6'
-      create_rental
+      rental = Rental.create_rental(@books, @people)
+      @rentals << rental
+      puts "\n\n Rental created successfully" if @rentals.include?(rental)
     when '7'
-      list_all_rentals_person_id
+      Person.list_all_rentals_person_id(@people, @rentals)
     when '8'
-      list_all_rentals_for_book
+      Book.list_all_rentals_for_book(@books, @rentals)
     end
   end
 
-  def list_all_books
-    @books.each do |book|
-      puts "Title: \"#{book.title}\" Author: #{book.author}"
-    end
-  end
+  # def list_all_books
+  #   @books.each do |book|
+  #     puts "Title: \"#{book.title}\" Author: #{book.author}"
+  #   end
+  # end
 
-  def list_all_people
-    @people.each do |person|
-      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-    end
-  end
+  # def list_all_people
+  #   @people.each do |person|
+  #     puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+  #   end
+  # end
   # rubocop:disable Metrics/MethodLength
 
-  def create_person
-    puts 'Do you want to create a student (1) or a teacher (2)?[Input the number]: '
-    person_choice = gets.chomp
-    if person_choice != '1' && person_choice != '2'
-      puts 'Invalid option'
-    else
-      print 'Age: '
-      age = gets.chomp
-      print 'Name: '
-      name = gets.chomp
-      case person_choice
-      when '1'
-        puts 'Has parent permission? [Y/N]: '
-        parent_permission = gets.chomp
-        parent_permission = parent_permission.downcase == 'y'
-        puts 'Please enter a classroom: '
-        classroom = gets.chomp
-        person = Student.new(age, name, parent_permission, classroom)
-      when '2'
-        puts 'specialization: '
-        specialization = gets.chomp
-        person = Teacher.new(age, name, true, specialization)
-      end
-    end
-    @people << person
-    puts 'Person created successfully'
-  end
-
-  def create_book
-    puts 'Title: '
-    title = gets.chomp
-    puts 'Author: '
-    author = gets.chomp
-
-    book = Book.new(title, author)
-
-    @books << book
-    puts 'Book created successfully' if @books.include?(book)
-  end
-
-  def create_rental
-    if @books.empty?
-      puts 'You have no  books currwenly. Please add a book.'
-    elsif @people.empty?
-      puts 'Person not found. Please add a person.'
-    else
-      puts 'Select a book from the following list by number'
-      @books.each do |book|
-        puts "#{@books.find_index(book)} - #{book.title}"
-      end
-      selected_book = gets.to_i
-      puts 'Date: '
-      date = gets.chomp
-      puts 'Select a person from the following list by number (not id)'
-      @people.each do |person|
-        puts "#{@people.find_index(person)} - #{person.name}"
-      end
-      selected_person = gets.to_i
-      rental = Rental.new(date, @books[selected_book], @people[selected_person])
-      @rentals << rental
-      puts 'Rental created successfully' if @rentals.include?(rental)
-    end
-  end
   # rubocop:enable Metrics/MethodLength
 
-  def list_all_rentals_person_id
-    list_all_people
-    puts 'ID of person: '
-    person_id = gets.to_i
-    puts(@rentals.map do |rental|
-      if rental.person.id == person_id
-        "Rentals:\nDate: #{rental.date}  Book: #{rental.book.title}"
-      else
-        'No rentals found for this person'
-      end
-    end)
-  end
 end
