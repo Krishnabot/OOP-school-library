@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'nameable'
 require_relative 'decorator'
 require_relative 'capitalize_decorator'

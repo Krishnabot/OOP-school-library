@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
