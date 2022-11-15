@@ -4,24 +4,33 @@ class UserInput
   def self.save_people(people)
     people_json = []
     people.each do |person|
-    person = {
+    person_data = {
         id: person.id.to_s,
         name: person.name,
         age: person.age
       }
     unless person.class.to_s == 'Teacher'
-      person[:classroom] = person.classroom
-      person[:parent_permission] = parent.parent_permission
+      person_data[:classroom] = person.classroom
+      person_data[:parent] = person.parent_permission
     else
-      person[:specialization] = person.specialization
+      person_data[:specialization] = person.specialization
     end
-    people_json << person
+    people_json << person_data
     File.write("people.json", JSON.pretty_generate(people_json))
     end
   end
 
-  def save_books
+  def self.save_books(books)
     #Save Book Here
+    books_json = []
+    books.each do |book|
+      book_data  = {
+        title: book.title,
+        author: book.author
+      }
+      books_json << book_data
+    end
+    File.write('books.json', JSON.pretty_generate(books_json))
   end
 
   def save_rentals
