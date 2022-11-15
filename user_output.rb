@@ -29,8 +29,15 @@ class UserOutput
     end
   end
 
-  def load_rentals
+  def self.load_rentals(rentals)
     # Load Rentals Here
+    return rentals unless File.exist?('rentals.json')
+    rental_read = File.read('rentals.json')
+    rental_json = JSON.parse(rental_read)
+    rental_json.each do |rental|
+      rental = Rental.new(rental['date'], rental['book.title'], rental['person.name'])
+      rentals << rental
+    end
   end
 
   def self.load_data(people, books, rentals)

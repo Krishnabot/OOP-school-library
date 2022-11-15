@@ -10,5 +10,17 @@
     "name": "Terry",
     "age": "45",
     "specialization": "Economics"
+  },
+  {
+    "id": "668",
+    "name": "Alex",
+    "age": "30",
+    "specialization": null
+  },
+  {
+    "id": "484",
+    "name": "Lucy",
+    "age": "30",
+    "specialization": "Hostess"
   }
 ]

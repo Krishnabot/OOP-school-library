@@ -33,8 +33,18 @@ class UserInput
     File.write('books.json', JSON.pretty_generate(books_json))
   end
 
-  def save_rentals
+  def self.save_rentals(rentals)
     # Save  Rental Here
+    rentals_json = [];
+    rentals.each do |rental|
+      rental_data = {
+        date: rental.date,
+        book: rental.book.title,
+        person: rental.person.name
+      }
+      rentals_json << rental_data
+    end
+    File.write('rentals.json', JSON.pretty_generate(rentals_json))
   end
 
   def self.save_data(people, books, rentals)

@@ -32,6 +32,7 @@ class App
     puts "Thank you for using this app!\n\n" if user_response == '9'
     UserInput.save_people(@people)
     UserInput.save_books(@books)
+    UserInput.save_rentals(@rentals)
   end
 
   def add_person
