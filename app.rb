@@ -1,7 +1,10 @@
+require 'json'
 require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
+require_relative 'user_input'
+require_relative 'user_output'
 
 class App
   def initialize
@@ -11,6 +14,7 @@ class App
   end
 
   def run
+    UserOutput.load_people(@people)
     user_response = 0
     puts "\n\nWelcome to OOP School Library App!\n\n"
     while user_response != '9'
@@ -25,6 +29,7 @@ class App
 
     end
     puts "Thank you for using this app!\n\n" if user_response == '9'
+    UserInput.save_people(@people)
   end
 
   def add_person
