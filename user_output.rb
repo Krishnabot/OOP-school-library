@@ -32,6 +32,7 @@ class UserOutput
   def self.load_rentals(rentals)
     # Load Rentals Here
     return rentals unless File.exist?('rentals.json')
+
     rental_read = File.read('rentals.json')
     rental_json = JSON.parse(rental_read)
     rental_json.each do |rental|

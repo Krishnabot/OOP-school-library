@@ -35,7 +35,7 @@ class UserInput
 
   def self.save_rentals(rentals)
     # Save  Rental Here
-    rentals_json = [];
+    rentals_json = []
     rentals.each do |rental|
       rental_data = {
         date: rental.date,
