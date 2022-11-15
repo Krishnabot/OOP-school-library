@@ -16,7 +16,7 @@ class UserInput
         person_data[:parent] = person.parent_permission
       end
       people_json << person_data
-      File.write('people.json', JSON.pretty_generate(people_json))
+      File.write('./data_store/people.json', JSON.pretty_generate(people_json))
     end
   end
 
@@ -30,7 +30,7 @@ class UserInput
       }
       books_json << book_data
     end
-    File.write('books.json', JSON.pretty_generate(books_json))
+    File.write('./data_store/books.json', JSON.pretty_generate(books_json))
   end
 
   def self.save_rentals(rentals)
@@ -44,7 +44,7 @@ class UserInput
       }
       rentals_json << rental_data
     end
-    File.write('rentals.json', JSON.pretty_generate(rentals_json))
+    File.write('./data_store/rentals.json', JSON.pretty_generate(rentals_json))
   end
 
   def self.save_data(people, books, rentals)
