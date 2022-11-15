@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
@@ -16,11 +18,7 @@ class App
     while user_response != '9'
       puts "Please choose an option:\n\n"
       app_options.each do |choice|
-        if choice.include?("Exit")
-          puts choice
-        else
-          puts choice
-        end
+        puts choice
       end
       puts "\n\nEnter Option [number]: "
       user_response = gets.chomp
@@ -72,8 +70,4 @@ class App
   #     puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
   #   end
   # end
-  # rubocop:disable Metrics/MethodLength
-
-  # rubocop:enable Metrics/MethodLength
-
 end

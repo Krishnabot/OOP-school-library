@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'nameable'
 require_relative 'decorator'
 require_relative 'capitalize_decorator'
@@ -27,7 +29,7 @@ class Person < Nameable
   def create_rental(_rental)
     Rental.new(date, self, book)
   end
-  
+
   def self.create_person
     print 'Do you want to create a student (1) or a teacher (2)?[Input the number]: '
     person_choice = gets.chomp

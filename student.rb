@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require './person'
 
 class Student < Person
   attr_reader :classroom
+
   def initialize(*all, classroom)
     super(*all)
     @classroom = classroom

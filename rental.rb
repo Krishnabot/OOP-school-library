@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Rental
   attr_accessor :date, :person, :book
 
@@ -8,7 +10,7 @@ class Rental
     @person = person
     person.rentals << self
   end
-  
+
   def self.create_rental(books, people)
     if books.empty?
       puts 'You have no  books currwenly. Please add a book.'

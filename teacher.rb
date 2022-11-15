@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './person'
 
 class Teacher < Person
@@ -21,6 +23,7 @@ class Teacher < Person
       end
     end
   end
+
   def can_use_services?
     true
   end

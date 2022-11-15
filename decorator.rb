@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'nameable'
 
 class Decorator < Nameable
