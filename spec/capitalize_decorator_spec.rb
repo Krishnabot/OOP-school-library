@@ -6,7 +6,7 @@ describe 'Testing for CapitalizeDecorator class ' do
   @person = Person.new(42, 'almeda', false)
   end
 
-  it ' whether it returns capitalised strin or not' do 
+  it ' whether it returns capitalised string or not' do 
     capitalized_string = CapitalizeDecorator.new(@person)
     expect(capitalized_string.correct_name).to eql 'Almeda'
   end
