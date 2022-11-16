@@ -8,7 +8,7 @@ describe Person do
     @person_under_age_with_permission = Person.new(15, 'TestName4', true)
   end
 
-  context "When texting the 'Person' class" do
+  context "When testing the 'Person' class" do
     it 'should return correct data for new object' do
       expect(@person_above_age_no_permission.age).to eq 23
       expect(@person_above_age_no_permission.name).to eq 'TestName1'
