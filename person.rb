@@ -62,12 +62,8 @@ class Person < Nameable
     print 'ID of person: '
     person_id = gets.chomp
     rentals.map do |rental|
-    if rental.person.id == person_id
-      return puts "Rentals:\nDate: #{rental.date}  Book: #{rental.book.title}" 
-    else 
-      return puts "No Rental Records Found"
+      return puts "Rentals:\nDate: #{rental.date}  Book: #{rental.book.title}" if rental.person.id == person_id
     end
-  end
   end
 
   private
