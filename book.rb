@@ -32,7 +32,7 @@ class Book
     book_title = gets.chomp
     puts(rentals.map do |rental|
       if rental.book.title == book_title
-        "Rentals:\nDate: #{rental.date}  Rented by: #{rental.person.name} (#{rental.person.id}"
+        "This Book is Rented by: #{rental.person.name} (#{rental.person.id}) on Date: \n#{rental.date}  "
       else
         'No rentals found for this book'
       end

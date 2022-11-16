@@ -46,10 +46,4 @@ class UserOutput
       rentals << rental
     end
   end
-
-  def self.load_data(people, books, rentals)
-    load_people(people)
-    load_books(books)
-    load_rentals(books, people, rentals)
-  end
 end
