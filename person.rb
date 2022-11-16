@@ -4,8 +4,7 @@ require_relative 'capitalize_decorator'
 require_relative 'trimmer_decorator'
 
 class Person < Nameable
-  attr_reader :id, :rentals
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :id, :rentals, :parent_permission
 
   def initialize(age, name, parent_permission)
     super()
@@ -53,7 +52,7 @@ class Person < Nameable
       'No people found, choose a different option to register a new person'
     else
       people.each do |person|
-        puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        puts "[#{person.class}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
       end
     end
   end
@@ -61,14 +60,10 @@ class Person < Nameable
   def self.list_all_rentals_person_id(people, rentals)
     list_all_people(people)
     print 'ID of person: '
-    person_id = gets.to_i
-    puts(rentals.map do |rental|
-      if rental.person.id == person_id
-        "Rentals:\nDate: #{rental.date}  Book: #{rental.book.title}"
-      else
-        'No rentals found for this person'
-      end
-    end)
+    person_id = gets.chomp
+    rentals.map do |rental|
+      return puts "Rentals:\nDate: #{rental.date}  Book: #{rental.book.title}" if rental.person.id == person_id
+    end
   end
 
   private

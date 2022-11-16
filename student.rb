@@ -1,7 +1,7 @@
 require './person'
 
 class Student < Person
-  attr_reader :classroom
+  attr_reader :classroom, :parent_permission
 
   def initialize(*all, classroom)
     super(*all)
@@ -22,7 +22,7 @@ class Student < Person
       if person.class.to_s == 'Teacher'
         'No students found, choose a different option to register a new student'
       else
-        puts "Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        puts "ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, Classroom: #{person.classroom}"
       end
     end
   end
