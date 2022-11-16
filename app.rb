@@ -19,7 +19,7 @@ class App
     UserOutput.load_rentals(@books, @people, @rentals)
 
     user_response = 0
-    puts "\n\nWelcome to OOP School Library App!\n\n"
+    puts "\n\nWelcome to OOP School Library App!\nAll your inputs will be saved to data_store only after exit\n\n"
     while user_response != '9'
       puts "Please choose an option:\n\n"
       app_options.each do |choice|
