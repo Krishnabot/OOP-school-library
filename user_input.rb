@@ -49,7 +49,7 @@ class UserInput
       rental_data = {
         date: rental.date,
         book: rental.book.title,
-        person: rental.person.name
+        person: rental.person.id.to_s
       }
       rentals_json << rental_data
     end

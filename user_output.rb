@@ -29,14 +29,20 @@ class UserOutput
     end
   end
 
-  def self.load_rentals(rentals)
+  def self.load_rentals(books, people, rentals)
     # Load Rentals Here
     return rentals unless File.exist?('./data_store/rentals.json')
 
     rental_read = File.read('./data_store/rentals.json')
     rental_json = JSON.parse(rental_read)
     rental_json.each do |rental|
-      rental = Rental.new(rental['date'], rental['book.title'], rental['person.name'])
+      book_title = books.find do |book|
+        book.title == rental['book']
+      end
+      person_id = people.find do |person|
+        person.id == rental['person']
+      end
+      rental = Rental.new(rental['date'], book_title, person_id)
       rentals << rental
     end
   end

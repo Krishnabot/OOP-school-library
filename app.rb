@@ -14,7 +14,10 @@ class App
   end
 
   def run
-    UserOutput.load_data(@people, @books, @rentals)
+    UserOutput.load_people(@people)
+    UserOutput.load_books(@books)
+    UserOutput.load_rentals(@books, @people, @rentals)
+
     user_response = 0
     puts "\n\nWelcome to OOP School Library App!\n\n"
     while user_response != '9'

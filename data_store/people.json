@@ -30,5 +30,21 @@
     "age": "65",
     "specialization": "Linear Algebra",
     "parent_permission": "true"
+  },
+  {
+    "id": "905",
+    "class": "Student",
+    "name": "Samantha",
+    "age": "23",
+    "classroom": "9",
+    "parent_permission": "true"
+  },
+  {
+    "id": "525",
+    "class": "Teacher",
+    "name": "Diana",
+    "age": "53",
+    "specialization": "Calculus",
+    "parent_permission": "true"
   }
 ]
