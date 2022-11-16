@@ -19,7 +19,7 @@ class Teacher < Person
       if person.class.to_s == 'Student'
         'No Teeachers found, choose a different option to register a new Student'
       else
-        puts "Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        puts "ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, Specialization: #{person.specialization}"
       end
     end
   end

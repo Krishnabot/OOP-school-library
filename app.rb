@@ -14,8 +14,7 @@ class App
   end
 
   def run
-    UserOutput.load_people(@people)
-    UserOutput.load_books(@books)
+    UserOutput.load_data(@people, @books, @rentals)
     user_response = 0
     puts "\n\nWelcome to OOP School Library App!\n\n"
     while user_response != '9'
@@ -30,9 +29,7 @@ class App
 
     end
     puts "Thank you for using this app!\n\n" if user_response == '9'
-    UserInput.save_people(@people)
-    UserInput.save_books(@books)
-    UserInput.save_rentals(@rentals)
+    UserInput.save_data(@people, @books, @rentals)
   end
 
   def add_person

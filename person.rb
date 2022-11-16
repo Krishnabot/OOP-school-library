@@ -52,7 +52,7 @@ class Person < Nameable
       'No people found, choose a different option to register a new person'
     else
       people.each do |person|
-        puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        puts "[#{person.class}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
       end
     end
   end
@@ -60,7 +60,7 @@ class Person < Nameable
   def self.list_all_rentals_person_id(people, rentals)
     list_all_people(people)
     print 'ID of person: '
-    person_id = gets.to_i
+    person_id = gets.chomp
     puts(rentals.map do |rental|
       if rental.person.id == person_id
         "Rentals:\nDate: #{rental.date}  Book: #{rental.book.title}"

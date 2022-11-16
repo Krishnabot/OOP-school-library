@@ -4,17 +4,26 @@ class UserInput
   def self.save_people(people)
     people_json = []
     people.each do |person|
-      person_data = {
-        id: person.id.to_s,
-        name: person.name,
-        age: person.age
-      }
-      if person.class.to_s == 'Teacher'
-        person_data[:specialization] = person.specialization
-      else
-        person_data[:classroom] = person.classroom
-        person_data[:parent] = person.parent_permission
-      end
+      person_data = if person.class.to_s == 'Teacher'
+                 {
+                   id: person.id.to_s,
+                   class: person.class.to_s,
+                   name: person.name,
+                   age: person.age,
+                   specialization: person.specialization,
+                   parent_permission: person.parent_permission.to_s
+                 }
+
+               else
+                 {
+                   id: person.id.to_s,
+                   class: person.class.to_s,
+                   name: person.name,
+                   age: person.age,
+                   classroom: person.classroom,
+                   parent_permission: person.parent_permission.to_s
+                 }
+               end
       people_json << person_data
       File.write('./data_store/people.json', JSON.pretty_generate(people_json))
     end
